@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 using System;
 using Newtonsoft.Json;
 using UnityEngine.XR.MagicLeap;
+using TMPro;
 
 public class RDataScript : MonoBehaviour
 {
