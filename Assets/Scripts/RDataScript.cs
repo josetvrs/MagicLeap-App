@@ -65,11 +65,6 @@ public class RDataScript : MonoBehaviour
             gripperStatus.SetText(robot.gripper);
         }
     }
-
-    private void OnDestroy(){
-        MLInput.Stop();
-    }
-
     public class MyObject
     {
         public string xPos {
@@ -88,5 +83,9 @@ public class RDataScript : MonoBehaviour
             get;
             set;
         }
+    }
+
+    private void OnDestroy(){
+        MLInput.Stop();
     }
 }
