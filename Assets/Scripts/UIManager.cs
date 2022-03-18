@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
         MLInput.Start();
         MLInput.OnControllerButtonUp += OnButtonUp;
         controller = MLInput.GetController(MLInput.Hand.Left);
-        
     }
     private void OnDestroy(){
         MLInput.OnControllerButtonUp -= OnButtonUp;

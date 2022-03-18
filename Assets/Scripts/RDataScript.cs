@@ -12,7 +12,10 @@ public class RDataScript : MonoBehaviour
 {
     
     public TMP_Text xPosition, yPosition, zPosition, gripperStatus;
-    private string xPos, yPos, zPos, gripper, url;
+    public TMP_Text modeText, statusText, iterationText;
+    private string xPos, yPos, zPos, gripper; //TMP of gripper information
+    private string status, location, iteration; //TMP of process information
+    private string url;
 
     private float waitTime = 0.5f;
     private float timer = 0.0f;
@@ -63,6 +66,9 @@ public class RDataScript : MonoBehaviour
             yPosition.SetText(robot.yPos);
             zPosition.SetText(robot.zPos);
             gripperStatus.SetText(robot.gripper);
+            statusText.SetText(robot.status);
+            modeText.SetText(robot.mode);
+            iterationText.SetText(robot.iterations);
         }
     }
     public class MyObject
@@ -80,6 +86,18 @@ public class RDataScript : MonoBehaviour
             set;
         }
         public string gripper {
+            get;
+            set;
+        }
+        public string mode {
+            get;
+            set;
+        }
+        public string iterations {
+            get;
+            set;
+        }
+        public string status {
             get;
             set;
         }
