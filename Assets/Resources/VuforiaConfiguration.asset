@@ -16,6 +16,7 @@ MonoBehaviour:
     vuforiaLicenseKey: 
     ufoLicenseKey: QWZZNWdUTC8vLy8vQUFBQUtFalRhNTc3SzB2Y25mRGV5cGxEYkVSUldwREdoRUVxMkU0a2F0WFF1LzRHaTdPcjFGOHhsUUE2ZWtYQVJLWjdmaFlXL09pYVpSVjRSelNXSTdqVWZOQS9jcExtaVVIMG5IYURjV3NyMnJOamxrOG81OFBnVXpyM3lCbU5CVFQ2b2dHK0lYai9YN3hTanZzZ1ZPeklwK2lZQnNUNEJvYzBOTXRkV2QyMHIyZFVvb3R6L242RS9PbVBrUU9pVVpBb3VRbGlHYWkvU1RrZlQ3U0UyanN0S2djS1RqTkRGU0ZZS0Z5bzc1T3lwak9oN0RpSkhLcmxTcmhCRVZ4UnRqZ1VlQVNPR2NHdlNpcFEyV2k4LzVhbEZrMm0rbWpZamtzNDZRRG9HV1hxdHM0ZEsvNlEzL0tKZHBHMDNqbzcrUGgzUHI3RmpHQkxMY0ZuOGdhdXNBUG83L1NDaVlQVEtiT0JWNk5uNW1hVHI5SDM=
     delayedInitialization: 0
+    cameraFocusModeSetting: 2
     cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
     maxSimultaneousObjectTargets: 1
@@ -23,8 +24,8 @@ MonoBehaviour:
     useDelayedLoadingObjectTargets: 0
     modelTargetRecoWhileExtendedTracked: 1
     shareRecordingsInITunes: 0
-    version: 9.8.8
-    eulaAcceptedVersions: '{"Values":["8.1","9.5","9.6","9.8","0.0","8.3","8.5","8.6","9.1","9.4"]}'
+    version: 10.6.3
+    eulaAcceptedVersions: '{"Values":["8.1","9.5","9.6","9.8","0.0","8.3","8.5","8.6","9.1","9.4","10.6"]}'
   database:
     disableModelExtraction: 0
   shaders:
@@ -39,6 +40,7 @@ MonoBehaviour:
     autoStartTracker: 1
     arcoreRequirement: 1
     autoImportArcore: 1
+    thirdPartyARCoreClientDetected: 0
   playmode:
     mSequencePath: 
     playModeType: 0

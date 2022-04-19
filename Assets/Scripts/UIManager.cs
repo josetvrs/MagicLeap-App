@@ -33,13 +33,17 @@ public class UIManager : MonoBehaviour
         if(controller.TriggerValue > 0.2f){
             RaycastHit hit;
             if(Physics.Raycast(controllerInput.transform.position, controllerInput.transform.forward, out hit)){
-                if(hit.transform.gameObject.name == "LabButton")
-                {
-                    SceneManager.LoadScene("CellScene");
-                }
-                else if(hit.transform.gameObject.name == "RobotButton")
+                if(hit.transform.gameObject.name == "AugmentedCell")
                 {
                     SceneManager.LoadScene("RobotScene");
+                }
+                else if(hit.transform.gameObject.name == "ManualMode")
+                {
+                    SceneManager.LoadScene("ManualScene");
+                }
+                else if(hit.transform.gameObject.name == "RobotTwin")
+                {
+                    SceneManager.LoadScene("TwinScene");
                 }
             }
         }
