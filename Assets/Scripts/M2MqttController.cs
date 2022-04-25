@@ -21,13 +21,13 @@ public class M2MqttController : M2MqttUnityClient
         public string positionY;
         public string gripperS;
     }
-    //----------------------------------------PUBLICAR-------------------------------------
+    //----------------------------------------PUBLISH-------------------------------------
     public void TestPublish(string msg)
     {
         client.Publish("ALSW/temp", System.Text.Encoding.UTF8.GetBytes(msg), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
         Debug.Log("JSON MSG: " + msg);
     }
-    //---------------------------------------CONEXION----------------------------------------
+    //---------------------------------------CONNECTION----------------------------------------
     protected override void OnConnecting()
     {
         base.OnConnecting();
@@ -49,7 +49,7 @@ public class M2MqttController : M2MqttUnityClient
     {
         client.Unsubscribe(new string[] { "ALSW/temp" });
     }
-    //--------------------------------------CHECAR CONEXION-----------------------------------
+    //--------------------------------------DISCONNECTION-----------------------------------
     protected override void OnConnectionFailed(string errorMessage)
     {
         Debug.Log("CONNECTION FAILED! " + errorMessage);
@@ -70,7 +70,7 @@ public class M2MqttController : M2MqttUnityClient
         Debug.Log("Ready.");
         base.Start();
     }
-    //------------------------------------MENSAJE RECIBIDO?-------------------------------
+    //------------------------------------POSITIONS-------------------------------
     protected override void Update()
     {
         base.Update(); // call ProcessMqttEvents()

@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 453cd1952052f432881d0bd0956ff9ca
   - enabled: 0
-    path: Assets/Abraham/Scenes/TecLab.unity
+    path: 
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
-    path: Assets/Scenes/CellScene.unity
+    path: 
     guid: 366a2330ab38a4cec8acc92da070dced
   - enabled: 1
     path: Assets/Scenes/RobotScene.unity
@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TwinScene.unity
     guid: f5ed209f552244e27aca499d1450a41a
+  - enabled: 1
+    path: Assets/Scenes/CellInstructions.unity
+    guid: 48eb4698ee2aa4c39ba95ece1ed9c5bd
   m_configObjects:
     com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: 06d8661c4488f4277a59608d7893ebbf,
       type: 2}

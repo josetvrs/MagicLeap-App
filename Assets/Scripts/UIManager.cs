@@ -35,19 +35,30 @@ public class UIManager : MonoBehaviour
             if(Physics.Raycast(controllerInput.transform.position, controllerInput.transform.forward, out hit)){
                 if(hit.transform.gameObject.name == "AugmentedCell")
                 {
+                    MLHandTracking.Stop();
+                    SceneManager.LoadScene("CellInstructions");
+                    
+                }
+                else if(hit.transform.gameObject.name == "ContinueButton1")
+                {
+                    MLHandTracking.Stop();
                     SceneManager.LoadScene("RobotScene");
                 }
                 else if(hit.transform.gameObject.name == "ManualMode")
                 {
+                    MLHandTracking.Stop();
                     SceneManager.LoadScene("ManualScene");
                 }
+                
                 else if(hit.transform.gameObject.name == "RobotTwin")
                 {
+                    MLHandTracking.Stop();
                     SceneManager.LoadScene("TwinScene");
                 }
             }
         }
     }
+    // HOME BUTTON
     void OnButtonUp(byte controllerId, MLInput.Controller.Button button){
         if (button == MLInput.Controller.Button.HomeTap)
         {
