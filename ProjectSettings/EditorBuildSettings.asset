@@ -8,12 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 453cd1952052f432881d0bd0956ff9ca
-  - enabled: 0
-    path: 
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: 
-    guid: 366a2330ab38a4cec8acc92da070dced
   - enabled: 1
     path: Assets/Scenes/RobotScene.unity
     guid: ddf9c154384083a41a779ffb2adeb2b7

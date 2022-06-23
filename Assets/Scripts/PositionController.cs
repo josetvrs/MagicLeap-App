@@ -1,30 +1,47 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.MagicLeap;
 using UnityEngine.UI;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
+using M2MqttUnity;
 using TMPro;
 
 public class PositionController : MonoBehaviour
 {
     private MLInput.Controller controller;
-    float moveX, moveY;
+    
     string gripper;
-    public TMP_Text xController, yController, gripperSt;
-    bool trigger = true;
+    public TMP_Text xController, yController, zController;
+    public TMP_Text xPos, yPos, zPos;
+    private float moveX, moveY, moveZ;
+
+    private string json;
+    
+    [Serializable]
+    public class PositionClass
+    {
+        public string positionX;
+        public string positionY;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         MLInput.Start();
         controller = MLInput.GetController(MLInput.Hand.Left);
-        moveX = 120.0f;
-        moveY = 0.0f;
-        gripper = "Open";
 
-        xController.SetText(moveX.ToString());
-        yController.SetText(moveY.ToString());
-        gripperSt.SetText(gripper);
+        moveX = float.Parse(xPos.text);
+        moveY = float.Parse(yPos.text);
+        moveZ = float.Parse(zPos.text);
+
+
+        xController.SetText(xPos.text);
+        yController.SetText(yPos.text);
+        zController.SetText(zPos.text);
+
     }
     
     void UpdateTouchPad(){
@@ -32,7 +49,7 @@ public class PositionController : MonoBehaviour
         {
             float x = controller.Touch1PosAndForce.x;
             float y = controller.Touch1PosAndForce.y;
-            float force =controller.Touch1PosAndForce.z;
+            float force = controller.Touch1PosAndForce.z;
 
             if (force > 0)
             {
@@ -61,29 +78,6 @@ public class PositionController : MonoBehaviour
         
     }
 
-    void UpdateTriggerInfo(){
-        // Controller trigger is pressed
-        if(controller.TriggerValue > 0.8f){
-            if(trigger == true){
-                if(gripper == "Close")
-                {
-                    gripper = "Open";
-                }
-                else if(gripper == "Open")
-                {
-                    gripper = "Close";
-                }
-                trigger = false;
-            }
-            
-
-        }
-        if(controller.TriggerValue < 0.2f)
-        {
-            trigger = true;
-            
-        }
-    }
 
     // Update is called once per frame
     void Update()
@@ -91,12 +85,23 @@ public class PositionController : MonoBehaviour
         UpdateTouchPad();
         xController.SetText(moveX.ToString());
         yController.SetText(moveY.ToString());
-        UpdateTriggerInfo();
-        gripperSt.SetText(gripper);
+        zController.SetText(moveZ.ToString());
     }
 
     void OnDestroy()
     {
         MLInput.Stop();
     }
+
+    private string GetPosition()
+    {
+        PositionClass position = new PositionClass();
+        position.positionX = xController.ToString();
+        position.positionY = yController.ToString();
+
+        json = JsonUtility.ToJson(position); 
+        return json;
+    }
+    
+
 }

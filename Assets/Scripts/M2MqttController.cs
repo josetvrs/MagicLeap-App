@@ -10,8 +10,8 @@ using TMPro;
 
 public class M2MqttController : M2MqttUnityClient
 {
-    public TMP_Text xPosition, yPosition, gripperStatus;
-    private string xPos, yPos, json, gStatus;
+    public TMP_Text xPosition, yPosition, zPosition;
+    private string xPos, yPos,zPos, json;
     private bool connected = false;
 
     [Serializable]
@@ -19,12 +19,12 @@ public class M2MqttController : M2MqttUnityClient
     {
         public string positionX;
         public string positionY;
-        public string gripperS;
+        public string positionZ;
     }
     //----------------------------------------PUBLISH-------------------------------------
     public void TestPublish(string msg)
     {
-        client.Publish("ALSW/temp", System.Text.Encoding.UTF8.GetBytes(msg), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+        client.Publish("AugmentedCell/manual", System.Text.Encoding.UTF8.GetBytes(msg), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
         Debug.Log("JSON MSG: " + msg);
     }
     //---------------------------------------CONNECTION----------------------------------------
@@ -42,12 +42,12 @@ public class M2MqttController : M2MqttUnityClient
     //----------------------------------------TOPICS-------------------------------------------
     protected override void SubscribeTopics()
     {
-        client.Subscribe(new string[] { "ALSW/temp" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+        client.Subscribe(new string[] { "AugmentedCell/manual" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
     }
 
     protected override void UnsubscribeTopics()
     {
-        client.Unsubscribe(new string[] { "ALSW/temp" });
+        client.Unsubscribe(new string[] { "AugmentedCell/manual" });
     }
     //--------------------------------------DISCONNECTION-----------------------------------
     protected override void OnConnectionFailed(string errorMessage)
@@ -74,23 +74,29 @@ public class M2MqttController : M2MqttUnityClient
     protected override void Update()
     {
         base.Update(); // call ProcessMqttEvents()
+        
+    }
+    public void SendButton()
+    {
         json = GetPosition();
         if(connected==true)
         {
             TestPublish(json);
         }
+
     }
     private string GetPosition()
     {
         xPos = xPosition.text;
         yPos = yPosition.text;
-        gStatus = gripperStatus.text;
+        zPos = zPosition.text;
         PositionClass position = new PositionClass();
         position.positionX = xPos;
         position.positionY = yPos;
-        position.gripperS = gStatus;
+        position.positionZ = zPos;
 
-        json = JsonUtility.ToJson(position); 
+        json = JsonUtility.ToJson(position);
+        position = null;
         return json;
     }
     private void OnDestroy()

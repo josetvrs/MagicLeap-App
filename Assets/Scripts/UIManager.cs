@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
 
     #region Private Methods
     void CheckTrigger(){
-        if(controller.TriggerValue > 0.2f){
+        if(controller.TriggerValue > 0.8f){
             RaycastHit hit;
             if(Physics.Raycast(controllerInput.transform.position, controllerInput.transform.forward, out hit)){
                 if(hit.transform.gameObject.name == "AugmentedCell")
@@ -54,6 +54,10 @@ public class UIManager : MonoBehaviour
                 {
                     MLHandTracking.Stop();
                     SceneManager.LoadScene("TwinScene");
+                }
+                else if(hit.transform.gameObject.name == "ExitButton"){
+                    MLHandTracking.Stop();
+                    Application.Quit();
                 }
             }
         }
